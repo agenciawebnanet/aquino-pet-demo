@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aqui no Pet Goiabeiras — Clínica 24h, Banho e Tosa, Loja e Farmácia</title>
+<meta name="description" content="Clínica veterinária 24h, banho e tosa, loja, farmácia e táxi dog em Cuiabá. Agende pelo WhatsApp.">
+<style>
+  :root{
+    --teal:#0f766e; --teal-dark:#0b544e; --mint:#e6f4f2;
+    --amber:#f59e0b; --amber-dark:#b45309;
+    --cream:#fffaf3; --ink:#1f2937; --muted:#6b7280;
+    --line:#e8e2d6; --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+  img{max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  header{position:sticky;top:0;z-index:30;background:rgba(255,250,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;gap:12px;padding:12px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
+  .logo .mark{width:38px;height:38px;border-radius:12px;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:20px}
+  .logo small{display:block;font-weight:600;color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .badge-24{margin-left:auto;background:var(--mint);color:var(--teal-dark);border:1px solid #bfe0db;padding:6px 11px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+  .hero{padding:34px 0 10px}
+  .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+  .hero p.lead{font-size:17px;color:#374151;margin:0 0 20px;max-width:60ch}
+  .row{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:14px;font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer;font-size:15px}
+  .btn-primary{background:var(--teal);color:#fff}
+  .btn-primary:hover{background:var(--teal-dark)}
+  .btn-amber{background:var(--amber);color:#3b2405}
+  .btn-amber:hover{background:#e58e05}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13px;color:#374151}
+  section{padding:34px 0}
+  h2{font-size:clamp(21px,3vw,27px);margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 20px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .card h3{margin:0 0 6px;font-size:17px}
+  .card p{margin:0 0 10px;color:#4b5563;font-size:14px}
+  .price{font-weight:800;color:var(--teal-dark);font-size:15px}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--amber-dark);background:#fef3c7;border-radius:999px;padding:4px 9px;margin-bottom:8px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .field{margin-bottom:14px}
+  label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+  input,select{width:100%;padding:12px 13px;border:1px solid #d8d2c6;border-radius:12px;background:#fffdf9;font-size:15px;font-family:inherit}
+  input:focus,select:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  .two{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+  @media(max-width:560px){.two{grid-template-columns:1fr}}
+  .note{font-size:12px;color:var(--muted);margin-top:10px}
+  .produtos{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+  .produto{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+  .produto .emoji{font-size:26px}
+  .produto strong{font-size:14px}
+  .produto .preco{font-weight:800;color:var(--teal-dark)}
+  .add{margin-top:auto;background:var(--mint);color:var(--teal-dark);border:1px solid #bfe0db;border-radius:10px;padding:9px;font-weight:700;cursor:pointer;font-size:13px}
+  .add:hover{background:#d5ece8}
+  .carrinho{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(0,0,0,.08);padding:12px 0;transform:translateY(110%);transition:transform .25s ease}
+  .carrinho.aberto{transform:translateY(0)}
+  .carrinho .linha{display:flex;align-items:center;gap:12px;justify-content:space-between}
+  .carrinho .itens{font-size:13px;color:var(--muted);max-height:88px;overflow:auto}
+  .total{font-weight:800;font-size:18px;color:var(--teal-dark)}
+  .fechar{background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted)}
+  .info{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  footer{border-top:1px solid var(--line);margin-top:20px;padding:22px 0 90px;color:var(--muted);font-size:13px}
+  .demo{font-size:11px;color:#9ca3af;margin-top:6px}
+  .flash{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-140%);background:var(--teal-dark);color:#fff;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:600;z-index:60;transition:transform .25s ease}
+  .flash.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <div class="logo"><span class="mark">🐾</span><span>Aqui no Pet<small>Goiabeiras · Cuiabá</small></span></div>
+    <span class="badge-24">Clínica 24h</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <h1>Seu pet cuidado 24 horas,<br>do banho à consulta.</h1>
+    <p class="lead">Clínica veterinária 24h, banho e tosa, loja, farmácia e táxi dog — tudo no mesmo lugar, com agendamento direto no WhatsApp.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="#agendar">Agendar banho e tosa</a>
+      <a class="btn btn-amber" href="https://wa.me/556596788008?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20da%20cl%C3%ADnica%2024h" target="_blank" rel="noopener">Clínica 24h agora</a>
+    </div>
+    <div class="chips">
+      <span class="chip">🩺 Clínica 24h</span>
+      <span class="chip">🛁 Banho e tosa</span>
+      <span class="chip">🏪 Loja e farmácia</span>
+      <span class="chip">🚕 Táxi dog</span>
+    </div>
+  </div>
+
+  <section id="servicos">
+    <div class="wrap">
+      <h2>Serviços</h2>
+      <p class="sub">Preços de exemplo nesta demonstração — os valores finais são definidos pela clínica.</p>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">24 horas</span>
+          <h3>Clínica veterinária</h3>
+          <p>Consultas, emergências, internação e exames. Atendimento de madrugada, fim de semana e feriado.</p>
+          <div class="price">Consultas com valor de exemplo</div>
+        </div>
+        <div class="card">
+          <h3>Banho e tosa</h3>
+          <p>Banho com secagem, tosa higiênica, tosa completa e hidratação. Leva e traz com o táxi dog.</p>
+          <div class="price">a partir de R$ 45 (exemplo)</div>
+        </div>
+        <div class="card">
+          <h3>Loja e farmácia</h3>
+          <p>Ração, petiscos, brinquedos, medicamentos e itens de higiene. Pedido pelo WhatsApp.</p>
+          <div class="price">entrega no mesmo dia (exemplo)</div>
+        </div>
+        <div class="card">
+          <h3>Táxi dog</h3>
+          <p>Busca e devolve o pet com segurança, com caixa de transporte higienizada.</p>
+          <div class="price">a partir de R$ 20 (exemplo)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agendar">
+    <div class="wrap">
+      <h2>Agendar banho e tosa</h2>
+      <p class="sub">Escolha o serviço, o porte e o horário. A confirmação vai direto para o WhatsApp da loja.</p>
+      <div class="panel">
+        <div class="two">
+          <div class="field">
+            <label for="servico">Serviço</label>
+            <select id="servico">
+              <option value="Banho">Banho</option>
+              <option value="Banho + tosa higiênica">Banho + tosa higiênica</option>
+              <option value="Banho + tosa completa">Banho + tosa completa</option>
+              <option value="Hidratação">Hidratação</option>
+              <option value="Táxi dog (buscar e devolver)">Táxi dog (buscar e devolver)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="porte">Porte do pet</label>
+            <select id="porte">
+              <option value="Pequeno (até 10 kg)">Pequeno (até 10 kg)</option>
+              <option value="Médio (10 a 25 kg)">Médio (10 a 25 kg)</option>
+              <option value="Grande (acima de 25 kg)">Grande (acima de 25 kg)</option>
+            </select>
+          </div>
+        </div>
+        <div class="two">
+          <div class="field">
+            <label for="data">Dia</label>
+            <input type="date" id="data">
+          </div>
+          <div class="field">
+            <label for="hora">Horário</label>
+            <select id="hora"></select>
+          </div>
+        </div>
+        <div class="two">
+          <div class="field">
+            <label for="tutor">Seu nome</label>
+            <input type="text" id="tutor" placeholder="Ex.: Maria Souza" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="pet">Nome do pet</label>
+            <input type="text" id="pet" placeholder="Ex.: Thor">
+          </div>
+        </div>
+        <button class="btn btn-primary" id="agendarBtn" type="button">Confirmar no WhatsApp</button>
+        <p class="note">A agenda real é confirmada pela clínica no WhatsApp (65) 3044-0000.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="loja">
+    <div class="wrap">
+      <h2>Loja</h2>
+      <p class="sub">Monte o pedido, veja o total e envie no WhatsApp. Preços de exemplo.</p>
+      <div class="produtos" id="produtos"></div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="wrap">
+      <h2>Onde estamos</h2>
+      <p class="sub">Bairro Goiabeiras, Cuiabá — MT.</p>
+      <div class="info">
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <p>Banho, tosa e loja: (65) 3044-0000<br>Clínica 24h: (65) 9678-8008</p>
+          <a class="btn btn-ghost" href="https://wa.me/556530440000" target="_blank" rel="noopener">Abrir conversa</a>
+        </div>
+        <div class="card">
+          <h3>Horários</h3>
+          <p>Clínica: 24 horas, todos os dias.<br>Banho e tosa e loja: seg a sáb, 8h às 18h.</p>
+        </div>
+        <div class="card">
+          <h3>Localização</h3>
+          <p>Ver no mapa e traçar rota até a clínica.</p>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Aqui+no+Pet+Goiabeiras+Cuiaba" target="_blank" rel="noopener">Abrir no Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Aqui no Pet Goiabeiras · Cuiabá — MT ·
+      <a href="https://instagram.com/aquinopetgoiabeiras" target="_blank" rel="noopener">@aquinopetgoiabeiras</a>
+      <div class="demo">Página de demonstração criada pela Vortelo. Preços ilustrativos.</div>
+    </div>
+  </footer>
+</main>
+
+<div class="carrinho" id="carrinho">
+  <div class="wrap">
+    <div class="linha">
+      <div>
+        <div class="itens" id="carrinhoItens">Carrinho vazio</div>
+        <div class="total" id="carrinhoTotal">R$ 0,00</div>
+      </div>
+      <div class="row" style="gap:8px">
+        <button class="btn btn-primary" id="enviarPedido" type="button">Enviar no WhatsApp</button>
+        <button class="fechar" id="fecharCarrinho" type="button" aria-label="Fechar carrinho">✕</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flash" id="flash">Adicionado ao pedido</div>
+
+<script>
+(function(){
+  var LOJA = "556530440000";
+  var CLINICA = "556596788008";
+
+  // Agenda: dias futuros e horários
+  var dataEl = document.getElementById("data");
+  var horaEl = document.getElementById("hora");
+  var hoje = new Date();
+  var iso = hoje.toISOString().slice(0,10);
+  dataEl.min = iso;
+  dataEl.value = iso;
+  for (var h = 8; h <= 18; h++) {
+    var o = document.createElement("option");
+    o.value = String(h).padStart(2,"0") + ":00";
+    o.textContent = o.value;
+    horaEl.appendChild(o);
+  }
+
+  function fmtData(v){
+    if(!v) return "";
+    var p = v.split("-");
+    return p[2] + "/" + p[1] + "/" + p[0];
+  }
+
+  document.getElementById("agendarBtn").addEventListener("click", function(){
+    var tutor = document.getElementById("tutor").value.trim();
+    var pet = document.getElementById("pet").value.trim();
+    var servico = document.getElementById("servico").value;
+    var porte = document.getElementById("porte").value;
+    var data = dataEl.value;
+    var hora = horaEl.value;
+    if(!tutor || !pet || !data || !hora){
+      flash("Preencha seu nome, o nome do pet e o horário.");
+      return;
+    }
+    var msg = "Olá! Vim pelo site do Aqui no Pet e quero agendar.\n\n" +
+      "Serviço: " + servico + "\n" +
+      "Porte: " + porte + "\n" +
+      "Dia: " + fmtData(data) + " às " + hora + "\n" +
+      "Tutor: " + tutor + "\n" +
+      "Pet: " + pet + "\n\n" +
+      "Pode confirmar esse horário?";
+    window.open("https://wa.me/" + LOJA + "?text=" + encodeURIComponent(msg), "_blank");
+  });
+
+  // Loja
+  var produtos = [
+    {id:"r1", emoji:"🥣", nome:"Ração premium 10 kg", preco:189.90, desc:"Frango e arroz"},
+    {id:"r2", emoji:"🥩", nome:"Ração úmida sachê", preco:6.50, desc:"Carne, 85 g"},
+    {id:"p1", emoji:"🦴", nome:"Petisco natural", preco:24.90, desc:"Ossinho defumado"},
+    {id:"f1", emoji:"💊", nome:"Antipulgas (1 mês)", preco:79.90, desc:"Até 10 kg"},
+    {id:"h1", emoji:"🧴", nome:"Shampoo hipoalergênico", preco:39.90, desc:"500 ml"},
+    {id:"b1", emoji:"🎾", nome:"Brinquedo mordedor", preco:19.90, desc:"Borracha atóxica"}
+  ];
+  var carrinho = {};
+
+  var box = document.getElementById("produtos");
+  produtos.forEach(function(p){
+    var el = document.createElement("div");
+    el.className = "produto";
+    el.innerHTML = '<span class="emoji">' + p.emoji + '</span>' +
+      '<strong>' + p.nome + '</strong>' +
+      '<span style="font-size:12px;color:#6b7280">' + p.desc + '</span>' +
+      '<span class="preco">' + brl(p.preco) + '</span>';
+    var b = document.createElement("button");
+    b.className = "add";
+    b.type = "button";
+    b.textContent = "Adicionar";
+    b.addEventListener("click", function(){
+      carrinho[p.id] = (carrinho[p.id] || 0) + 1;
+      render();
+      flash(p.nome + " no pedido");
+    });
+    el.appendChild(b);
+    box.appendChild(el);
+  });
+
+  function brl(v){ return "R$ " + v.toFixed(2).replace(".", ","); }
+
+  function render(){
+    var itens = document.getElementById("carrinhoItens");
+    var totalEl = document.getElementById("carrinhoTotal");
+    var ids = Object.keys(carrinho);
+    var total = 0;
+    if(!ids.length){
+      itens.textContent = "Carrinho vazio";
+      totalEl.textContent = brl(0);
+      document.getElementById("carrinho").classList.remove("aberto");
+      return;
+    }
+    var linhas = [];
+    ids.forEach(function(id){
+      var p = produtos.filter(function(x){return x.id === id;})[0];
+      var q = carrinho[id];
+      total += p.preco * q;
+      linhas.push(q + "x " + p.nome + " — " + brl(p.preco * q));
+    });
+    itens.innerHTML = linhas.join("<br>");
+    totalEl.textContent = brl(total);
+    document.getElementById("carrinho").classList.add("aberto");
+  }
+
+  document.getElementById("fecharCarrinho").addEventListener("click", function(){
+    document.getElementById("carrinho").classList.remove("aberto");
+  });
+
+  document.getElementById("enviarPedido").addEventListener("click", function(){
+    var ids = Object.keys(carrinho);
+    if(!ids.length) return;
+    var linhas = [];
+    var total = 0;
+    ids.forEach(function(id){
+      var p = produtos.filter(function(x){return x.id === id;})[0];
+      var q = carrinho[id];
+      total += p.preco * q;
+      linhas.push("• " + q + "x " + p.nome + " — " + brl(p.preco * q));
+    });
+    var msg = "Olá! Vim pelo site do Aqui no Pet e quero fazer um pedido:\n\n" +
+      linhas.join("\n") + "\n\nTotal: " + brl(total) + "\n\nPode confirmar a entrega?";
+    window.open("https://wa.me/" + LOJA + "?text=" + encodeURIComponent(msg), "_blank");
+  });
+
+  var flashTimer;
+  function flash(txt){
+    var f = document.getElementById("flash");
+    f.textContent = txt;
+    f.classList.add("show");
+    clearTimeout(flashTimer);
+    flashTimer = setTimeout(function(){ f.classList.remove("show"); }, 1800);
+  }
+})();
+</script>
+</body>
+</html>
